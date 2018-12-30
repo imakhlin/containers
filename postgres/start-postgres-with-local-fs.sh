@@ -1,23 +1,30 @@
 #!/bin/bash
 
-CONTAINER_NAME=iguazio/postgres
-#RUN_AS_USER=$(id -u):$(id -g)
-RUN_AS_USER=postgres:postgres
+set -e
 
-LOCAL_FS_MOUNT=/tmp/psql
+DOCKER_IMAGE=iguazio/postgres
+CONTAINER_NAME=v3io-postgres
+
+#RUN_AS=$(id -u):$(id -g)
+RUN_AS=postgres:postgres
+
+LOCAL_FS_MOUNT=/tmp/postgres/data
 rm -rf $LOCAL_FS_MOUNT
 mkdir -p $LOCAL_FS_MOUNT
 
-echo "Starting docker container $CONTAINER_NAME ..."
+chmod -R 0750 $LOCAL_FS_MOUNT
+sudo chown $RUN_AS $LOCAL_FS_MOUNT
+
+echo "Starting docker container $CONTAINER_NAME from image $DOCKER_IMAGE ..."
 docker run \
 --detach \
---restart=always \
---user $RUN_AS_USER \
---name v3io-postgres \
+--restart=no \
+--user $RUN_AS \
+--name $CONTAINER_NAME \
 -p 5432:5432 \
--e PGDATA=/var/lib/postgresql/data_local \
---volume $LOCAL_FS_MOUNT:/var/lib/postgresql/data_local \
-$CONTAINER_NAME
+-e PGDATA=/var/lib/postgresql/data \
+--volume $LOCAL_FS_MOUNT:/var/lib/postgresql/data \
+$DOCKER_IMAGE
 
 if [ $? -eq 0 ]; then
     echo

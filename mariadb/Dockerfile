@@ -20,6 +20,10 @@ RUN groupadd -g $GID $UNAME; \
     useradd -m -u $UID -g $UNAME -d /home/$UNAME -s /bin/bash $UNAME; \
     chown -R $UID:$GID /home/$UNAME
 
+# Install GDB package for debug capabilities
+RUN apt-get update -qq; \
+    apt-get -qq -y install gdb;
+
 USER $MYSQL_UNAME
 
 #CMD ["you can overwrite command here if needed"]

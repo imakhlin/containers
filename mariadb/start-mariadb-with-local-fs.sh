@@ -10,7 +10,7 @@ RUN_AS_GROUP=$RUN_AS_USER
 RUN_AS=$(id -u $RUN_AS_USER):$(id -g $RUN_AS_GROUP)
 
 LOCAL_FS_MOUNT=/tmp/mariadb/mysql
-rm -rf $LOCAL_FS_MOUNT
+sudo rm -rf $LOCAL_FS_MOUNT
 mkdir -p $LOCAL_FS_MOUNT
 
 chmod -R 777 $LOCAL_FS_MOUNT

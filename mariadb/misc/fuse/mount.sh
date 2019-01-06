@@ -3,7 +3,7 @@
 set -x
 
 MOUNT_PATH=/tmp/fuse_mysql
-SESSION_TOKEN="a2924bfa-64b5-4049-9da0-4ecd157daf6d"
+SESSION_TOKEN="4c459042-a667-44ac-af6d-22466e8b14b3"
 
 if [ "$1" != "" ]; then
   SESSION_TOKEN=$1

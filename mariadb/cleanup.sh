@@ -11,8 +11,8 @@ echo "Removing $CONTAINER_NAME docker container..."
 docker rm $CONTAINER_NAME
 
 if [ -d $LOCAL_MYSQL_DIR ]; then
-  echo "Removing conetent of the mysql local data directory ($LOCAL_MYSQL_DIR) ..."
-  rm -rf $LOCAL_MYSQL_DIR
+#  echo "Removing conetent of the mysql local data directory ($LOCAL_MYSQL_DIR) ..."
+#  rm -rf $LOCAL_MYSQL_DIR
 fi
 
 if [ -d $FUSE_MYSQL_DIR ]; then

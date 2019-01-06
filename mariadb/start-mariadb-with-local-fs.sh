@@ -25,6 +25,7 @@ docker run \
 -p 13306:3306 \
 -e MYSQL_ALLOW_EMPTY_PASSWORD="true" \
 --volume $LOCAL_FS_MOUNT:/var/lib/mysql \
+--volume /var/crash:/var/crash \
 $DOCKER_IMAGE
 
 if [ $? -eq 0 ]; then

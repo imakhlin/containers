@@ -21,8 +21,8 @@ RUN groupadd -g $GID $UNAME; \
     chown -R $UID:$GID /home/$UNAME
 
 # Install GDB package for debug capabilities
-RUN apt-get update -qq; \
-    apt-get -qq -y install gdb;
+#RUN apt-get update -qq; \
+#    apt-get -qq -y install gdb;
 
 USER $MYSQL_UNAME
 
